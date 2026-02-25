@@ -4,6 +4,7 @@ import {
   Dumbbell, 
   Timer, 
   ChevronRight, 
+  ChevronLeft,
   X, 
   Play, 
   Pause, 
@@ -243,20 +244,22 @@ function ExerciseModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deep-black/95 backdrop-blur-xl"
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deep-black/95 backdrop-blur-xl cursor-pointer"
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-        className="relative w-full max-w-lg bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(230,0,0,0.15)]"
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(230,0,0,0.15)] cursor-default"
       >
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-white transition-colors"
+          className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-intense-red flex items-center justify-center text-white shadow-[0_0_20px_rgba(230,0,0,0.5)] hover:scale-110 active:scale-95 transition-all"
         >
-          <X className="w-5 h-5" />
+          <X className="w-6 h-6 stroke-[3px]" />
         </button>
 
         <div className="p-8">
@@ -330,7 +333,7 @@ function ExerciseModal({
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-8">
               <button 
                 onClick={toggleTimer}
                 className={cn(
@@ -349,6 +352,14 @@ function ExerciseModal({
                 <RotateCcw className="w-6 h-6" />
               </button>
             </div>
+
+            <button
+              onClick={onClose}
+              className="w-full py-4 rounded-2xl bg-intense-red text-white font-bold uppercase tracking-widest text-xs shadow-[0_0_20px_rgba(230,0,0,0.3)] hover:bg-intense-red/90 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+            >
+              <X className="w-5 h-5 stroke-[3px]" />
+              Sair do Exercício
+            </button>
           </div>
         </div>
       </motion.div>
