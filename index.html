@@ -471,8 +471,18 @@
             );
         }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
+       // Esse bloco garante que o app só ligue quando tudo estiver carregado
+    setTimeout(() => {
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        const root = ReactDOM.createRoot(rootElement);
         root.render(<App />);
+        // Ativa os ícones da biblioteca Lucide
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }
+    }, 1000); // Espera 1 segundo
     </script>
 </body>
 </html>
