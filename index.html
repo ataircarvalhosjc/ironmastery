@@ -20,9 +20,13 @@
     
     <!-- Framer Motion & Lucide CDNs -->
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/lucide-react@latest"></script>
-
+   <script src="https://unpkg.com/lucide@0.473.0"></script>
+    <script src="https://unpkg.com/lucide-react@0.473.0"></script>
+    <script>
+      setTimeout(() => {
+        lucide.createIcons();
+      }, 500);
+    </script>
     <script>
         tailwind.config = {
             theme: {
